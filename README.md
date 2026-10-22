@@ -1,4 +1,4 @@
-# Remote LUKS Unlock for Headless Homelab Servers (Dropbear + initramfs)
+![](assets/cover.png)
 
 > Unlock your encrypted Linux server's disk over SSH — no monitor, no keyboard, no trip to the server closet.
 
