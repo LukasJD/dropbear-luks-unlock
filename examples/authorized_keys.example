@@ -1,0 +1,10 @@
+# Example: /etc/dropbear/initramfs/authorized_keys
+#
+# This is ONE single line (shown here without wrapping — do not add a real
+# line break in the middle of it). Replace <YOUR-PUBLIC-KEY-DATA> with the
+# actual contents of your own ~/.ssh/<yourkeyname>.pub file, copy-pasted
+# exactly — never retyped by hand.
+#
+# See docs/05-ssh-authentication.md for the full syntax breakdown.
+
+no-port-forwarding,no-agent-forwarding,no-x11-forwarding,command="/bin/cryptroot-unlock" ssh-ed25519 <YOUR-PUBLIC-KEY-DATA> myserver-unlock

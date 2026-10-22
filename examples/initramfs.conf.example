@@ -1,0 +1,11 @@
+# Example addition to: /etc/initramfs-tools/initramfs.conf
+#
+# Format: client-ip::gateway:netmask:hostname:interface:autoconf
+#
+# Check whether an IP= line already exists (active or commented out) before
+# adding a new one — see docs/04-networking.md.
+
+IP=<SERVER-IP>::<GATEWAY-IP>:<NETMASK>::<INTERFACE>:off
+
+# Real-world example (do not copy verbatim — use your own network's values):
+# IP=192.168.1.50::192.168.1.1:255.255.255.0::eth0:off

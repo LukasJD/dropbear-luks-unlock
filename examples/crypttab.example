@@ -1,0 +1,13 @@
+# Example: /etc/crypttab (for reference only)
+#
+# This file is normally already created by your OS installer when you set up
+# LUKS encryption — this guide does not create or modify it. It's included
+# here only so the volume name referenced elsewhere (dm_crypt-0, in this
+# guide's tested example) makes sense in context.
+#
+# Format: <target-name> <source-device-or-UUID> <key-file> <options>
+
+# dm_crypt-0 UUID=<YOUR-LUKS-UUID> none luks,discard
+
+# Find your own device's UUID with:
+#   sudo blkid

@@ -1,0 +1,24 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor/IDE
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Never commit real secrets or machine-specific data
+*_unlock
+*_unlock.pub
+*.pem
+*_host_key
+*_host_key.pub
+authorized_keys
+!examples/authorized_keys.example
+
+# Local scratch notes
+notes.md
+TODO.local.md

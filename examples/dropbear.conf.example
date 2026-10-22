@@ -1,0 +1,11 @@
+# Example: /etc/dropbear/initramfs/dropbear.conf
+#
+# -p 2222   Listen on a non-default port, so Dropbear's host key never
+#           collides with your regular OS sshd's host key in known_hosts
+# -s        Disable password logins entirely — key-only authentication
+# -j -k     Disable local/remote port forwarding at the binary level
+# -I 60     Auto-disconnect an idle session after 60 seconds
+#
+# See docs/06-cryptroot-unlock.md for the full explanation of each flag.
+
+DROPBEAR_OPTIONS="-p 2222 -s -j -k -I 60"
