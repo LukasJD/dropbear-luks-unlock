@@ -268,8 +268,8 @@ You fall back to physical keyboard/monitor access, same as before this setup exi
 Package versions drift over time — what worked when this was written may not exactly match what `apt` gives you later. This guide was verified against:
 
 ```
-Ubuntu:               (record your release, e.g. 24.04 LTS)
-Kernel:               (uname -r)
+Ubuntu:               26.04.1 LTS (Resolute Raccoon) x86_64
+Kernel:               Linux 7.0.0-38-generic
 initramfs-tools:      0.151ubuntu1
 cryptsetup-initramfs: 2:2.8.4-1ubuntu4
 dropbear-bin:         2025.89-1
