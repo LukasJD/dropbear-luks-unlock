@@ -10,6 +10,8 @@ Read-only on the server; the only reboot is the final live test.
 dpkg -l | grep -E 'dropbear|initramfs-tools|cryptsetup-initramfs'
 ```
 Expected: `dropbear-bin`, `dropbear-initramfs`, `initramfs-tools`, `cryptsetup-initramfs` all present as `ii`.
+Path note: on Debian 12+/recent Ubuntu everything lives under `/etc/dropbear/initramfs/`;
+older releases use `/etc/dropbear-initramfs/` — substitute throughout if that's what exists.
 
 ```bash
 # A2. Dropbear runtime options contain the port
@@ -46,8 +48,13 @@ Expected: `/bin/cryptroot-unlock` present, plus `bin/dropbear` and
 ```bash
 # A6. Dropbear host keys exist and fingerprint matches what you recorded
 ls /etc/dropbear/initramfs/ | grep dropbear
-ssh-keygen -lf /etc/dropbear/initramfs/dropbear_rsa_host_key
+dropbearkey -y -f /etc/dropbear/initramfs/dropbear_rsa_host_key | ssh-keygen -lf -
 ```
+Note: Dropbear host keys are single files in Dropbear's own format, so `ssh-keygen -lf
+<keyfile>` cannot read them directly — `dropbearkey -y` prints the OpenSSH-format public
+key line and `ssh-keygen -lf -` fingerprints it. Compare the output against the fingerprint
+recorded at install time (`docs/03-installation.md`). Repeat for `dropbear_ed25519_host_key`
+if you want all keys covered.
 
 ## B. Client-side checks (PowerShell, before rebooting)
 

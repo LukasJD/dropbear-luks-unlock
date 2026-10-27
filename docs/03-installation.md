@@ -7,6 +7,8 @@ sudo apt update
 sudo apt install dropbear-initramfs
 ```
 
+> **Path note:** on **Debian 12+ and recent Ubuntu (roughly 23.04+)** everything lives under `/etc/dropbear/initramfs/`. Older releases use `/etc/dropbear-initramfs/` — same files, same names. If only the older directory exists on your system, use it wherever this guide says `/etc/dropbear/initramfs/`.
+
 This single package pulls in everything needed:
 
 | Package | Role |
@@ -18,7 +20,7 @@ This single package pulls in everything needed:
 
 ## What happens during install
 
-1. **Host keys are generated** (RSA, ECDSA, ED25519) and saved to `/etc/dropbear/initramfs/`, both private key files and matching `.pub` files. Their fingerprints print to the console — **record these now**, you'll need them to verify you're not facing a real man-in-the-middle later.
+1. **Host keys are generated** (RSA, ECDSA, ED25519) and saved to `/etc/dropbear/initramfs/` as `dropbear_rsa_host_key`, `dropbear_ecdsa_host_key` and `dropbear_ed25519_host_key`. Dropbear stores each key as a **single file in its own format — there are no separate `.pub` files** (unlike your `ssh-keygen`-generated client key). Their fingerprints print to the console during install — **record these now**, you'll need them to verify you're not facing a real man-in-the-middle later. (To see a fingerprint again later, use `dropbearkey -y -f <keyfile> | ssh-keygen -lf -` — plain `ssh-keygen -lf <keyfile>` cannot read Dropbear's format.)
 2. **You'll see a warning:**
    ```
    dropbear: WARNING: Invalid authorized_keys file, SSH login to initramfs won't work!

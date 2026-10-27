@@ -9,6 +9,7 @@
 | `ip a` shows `dynamic` even after setting a static `IP=` line | That's expected — `ip a` reports **post-boot** networking (DHCP/NetworkManager), which is separate from the initramfs-stage static config | `docs/04-networking.md` |
 | Config changes don't seem to take effect | Forgot to rebuild: `sudo update-initramfs -u` | `docs/07-initramfs.md` |
 | Not sure if `dracut` or `initramfs-tools` is actually active | `dpkg -l \| grep -E 'dracut\|initramfs-tools'` and check `/etc/kernel/postinst.d/` for which hook is registered | `docs/03-installation.md` |
+| Config files exist in one `/etc/dropbear(initramfs)` location, but the guide (or your memory) says the other | Older Debian/Ubuntu releases use `/etc/dropbear-initramfs/`, Debian 12+/recent Ubuntu use `/etc/dropbear/initramfs/` — both are valid, just be consistent | `docs/03-installation.md` |
 | Locked out entirely — no key works | Fall back to physical keyboard/monitor unlock, same as before this setup existed. This is why key backups matter. | `docs/10-security.md` |
 
 ## General debugging approach

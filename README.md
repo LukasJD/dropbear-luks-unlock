@@ -4,10 +4,9 @@
 
 **Difficulty:** Beginner–Intermediate · **Time:** ~30–45 minutes · **Distro:** Debian/Ubuntu (dropbear-initramfs)
 
-<!-- Suggested badges once this lives in a real repo — delete if you don't want them:
-![License](https://img.shields.io/github/license/yourname/repo)
-![Last Commit](https://img.shields.io/github/last-commit/yourname/repo)
--->
+![License: MIT](https://img.shields.io/github/license/LukasJD/dropbear-luks-unlock)
+![Platform](https://img.shields.io/badge/platform-Debian%20%7C%20Ubuntu-blue)
+![Difficulty](https://img.shields.io/badge/difficulty-beginner--intermediate-yellow)
 
 ---
 
@@ -38,6 +37,7 @@ For a homelab server tucked in a closet, garage, or another room, that's a dealb
 - [FAQ](#faq)
 - [Tested versions](#tested-versions-reproducibility-record)
 - [Resources & credits](#resources--credits)
+- [Contributing](#contributing)
 - [License](#license)
 
 ---
@@ -96,6 +96,12 @@ Then, in your router's settings, find **DHCP reservation** / **static lease** / 
 sudo apt update
 sudo apt install dropbear-initramfs
 ```
+
+> **Path note:** `/etc/dropbear/initramfs/` is the correct location on **Debian 12+ and recent Ubuntu (roughly 23.04+)**. Older releases keep everything under `/etc/dropbear-initramfs/` instead — if that directory exists and the other doesn't, use it everywhere this guide says `/etc/dropbear/initramfs/`. The file names and file contents are identical either way. Check which one you have:
+>
+> ```bash
+> ls -d /etc/dropbear/initramfs /etc/dropbear-initramfs
+> ```
 
 This also installs `initramfs-tools`, the tool that actually builds the mini-filesystem. You'll see host SSH keys generated automatically, and a warning like:
 
@@ -285,7 +291,7 @@ apt-cache policy dropbear-initramfs
 
 ## Resources & credits
 
-**Dropbear itself** was created by **Matt Johnston**, first released in 2003. This guide does not vendor, modify, or redistribute Dropbear's source — it only documents how to use the version Ubuntu/Debian already package. Full licensing detail lives in [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md), not repeated here to avoid two places drifting out of sync.
+**Dropbear itself** was created by **Matt Johnston**, first released in 2003. This guide does not vendor, modify, or redistribute Dropbear's source — it only documents how to use the version Ubuntu/Debian already packages. Full licensing detail lives in [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md), not repeated here to avoid two places drifting out of sync.
 
 - [Dropbear SSH — official homepage (Matt Johnston)](https://matt.ucc.asn.au/dropbear/dropbear.html)
 - [Dropbear source repository (GitHub)](https://github.com/mkj/dropbear)
